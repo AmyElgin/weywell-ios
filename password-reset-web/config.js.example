@@ -1,0 +1,5 @@
+// Copy to config.js and replace these values before hosting the reset page.
+window.WeywellConfig = {
+  supabaseURL: "https://YOUR_PROJECT_ID.supabase.co",
+  supabasePublishableKey: "YOUR_SUPABASE_PUBLISHABLE_KEY",
+};

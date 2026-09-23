@@ -1,0 +1,6 @@
+// Safe defaults. Put real local values in the ignored Secrets.xcconfig file.
+SUPABASE_URL =
+SUPABASE_PUBLISHABLE_KEY =
+REVENUECAT_IOS_KEY =
+
+#include? "Secrets.xcconfig"

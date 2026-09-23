@@ -1,0 +1,85 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A001 /* WeywellApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A101 /* WeywellApp.swift */; };
+		A002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A102 /* ContentView.swift */; };
+		A003 /* SafetyUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A103 /* SafetyUpdate.swift */; };
+		A004 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A104 /* LocationManager.swift */; };
+		A005 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A105 /* PurchaseManager.swift */; };
+		A007 /* MonitorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A107 /* MonitorManager.swift */; };
+		A008 /* BackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A108 /* BackendService.swift */; };
+		A009 /* ProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A109 /* ProfileStore.swift */; };
+		A010 /* PushSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = A110 /* PushSync.swift */; };
+		A011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A111 /* Assets.xcassets */; };
+		A006 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = A301 /* RevenueCat */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A100 /* Weywell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weywell.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A101 /* WeywellApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeywellApp.swift; sourceTree = "<group>"; };
+		A102 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A103 /* SafetyUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyUpdate.swift; sourceTree = "<group>"; };
+		A104 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		A105 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
+		A106 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A107 /* MonitorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorManager.swift; sourceTree = "<group>"; };
+		A108 /* BackendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendService.swift; sourceTree = "<group>"; };
+		A109 /* ProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStore.swift; sourceTree = "<group>"; };
+		A110 /* PushSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushSync.swift; sourceTree = "<group>"; };
+		A111 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A112 /* Weywell.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Weywell.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A200 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = ( A006 /* RevenueCat in Frameworks */, ); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A400 = {isa = PBXGroup; children = ( A401 /* Weywell */, A402 /* Products */, A112 /* Weywell.xcconfig */, ); sourceTree = "<group>"; };
+		A401 /* Weywell */ = {isa = PBXGroup; children = ( A101 /* WeywellApp.swift */, A102 /* ContentView.swift */, A103 /* SafetyUpdate.swift */, A104 /* LocationManager.swift */, A105 /* PurchaseManager.swift */, A107 /* MonitorManager.swift */, A108 /* BackendService.swift */, A109 /* ProfileStore.swift */, A110 /* PushSync.swift */, A111 /* Assets.xcassets */, A106 /* Info.plist */, ); path = Weywell; sourceTree = "<group>"; };
+		A402 /* Products */ = {isa = PBXGroup; children = ( A100 /* Weywell.app */, ); name = Products; sourceTree = "<group>"; };
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A500 /* Weywell */ = {isa = PBXNativeTarget; buildConfigurationList = A600 /* Build configuration list for PBXNativeTarget "Weywell" */; buildPhases = ( A700 /* Sources */, A200 /* Frameworks */, A701 /* Resources */, ); buildRules = (); dependencies = (); name = Weywell; packageProductDependencies = ( A301 /* RevenueCat */, ); productName = Weywell; productReference = A100 /* Weywell.app */; productType = "com.apple.product-type.application"; };
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A800 /* Project object */ = {isa = PBXProject; attributes = { LastSwiftUpdateCheck = 1600; LastUpgradeCheck = 1600; TargetAttributes = { A500 = { CreatedOnToolsVersion = 16.0; }; }; }; buildConfigurationList = A601 /* Build configuration list for PBXProject "Weywell" */; compatibilityVersion = "Xcode 14.0"; developmentRegion = en; hasScannedForEncodings = 0; knownRegions = ( en, Base, ); mainGroup = A400; packageReferences = ( A300 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */, ); productRefGroup = A402 /* Products */; projectDirPath = ""; projectRoot = ""; targets = ( A500 /* Weywell */, ); };
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A701 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = ( A011 /* Assets.xcassets in Resources */, ); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A700 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = ( A001 /* WeywellApp.swift in Sources */, A002 /* ContentView.swift in Sources */, A003 /* SafetyUpdate.swift in Sources */, A004 /* LocationManager.swift in Sources */, A005 /* PurchaseManager.swift in Sources */, A007 /* MonitorManager.swift in Sources */, A008 /* BackendService.swift in Sources */, A009 /* ProfileStore.swift in Sources */, A010 /* PushSync.swift in Sources */, ); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A900 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = { ALWAYS_SEARCH_USER_PATHS = NO; CLANG_ENABLE_MODULES = YES; CLANG_ENABLE_OBJC_ARC = YES; DEBUG_INFORMATION_FORMAT = dwarf; ENABLE_TESTABILITY = YES; GCC_C_LANGUAGE_STANDARD = gnu17; SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; }; name = Debug; };
+		A901 /* Release */ = {isa = XCBuildConfiguration; buildSettings = { ALWAYS_SEARCH_USER_PATHS = NO; CLANG_ENABLE_MODULES = YES; CLANG_ENABLE_OBJC_ARC = YES; GCC_C_LANGUAGE_STANDARD = gnu17; SWIFT_COMPILATION_MODE = wholemodule; SWIFT_OPTIMIZATION_LEVEL = "-O"; }; name = Release; };
+		A902 /* Debug */ = {isa = XCBuildConfiguration; baseConfigurationReference = A112 /* Weywell.xcconfig */; buildSettings = { ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; CODE_SIGN_ENTITLEMENTS = Weywell/WeywellDebug.entitlements; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = Weywell/Info.plist; IPHONEOS_DEPLOYMENT_TARGET = 17.0; MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.weywell.app; PRODUCT_NAME = "$(TARGET_NAME)"; SDKROOT = iphoneos; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 1; }; name = Debug; };
+		A903 /* Release */ = {isa = XCBuildConfiguration; baseConfigurationReference = A112 /* Weywell.xcconfig */; buildSettings = { ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; CODE_SIGN_ENTITLEMENTS = Weywell/WeywellRelease.entitlements; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = Weywell/Info.plist; IPHONEOS_DEPLOYMENT_TARGET = 17.0; MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.weywell.app; PRODUCT_NAME = "$(TARGET_NAME)"; SDKROOT = iphoneos; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 1; }; name = Release; };
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A600 /* Build configuration list for PBXNativeTarget "Weywell" */ = {isa = XCConfigurationList; buildConfigurations = ( A902 /* Debug */, A903 /* Release */, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		A601 /* Build configuration list for PBXProject "Weywell" */ = {isa = XCConfigurationList; buildConfigurations = ( A900 /* Debug */, A901 /* Release */, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A300 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */ = {isa = XCRemoteSwiftPackageReference; repositoryURL = "https://github.com/RevenueCat/purchases-ios-spm.git"; requirement = { kind = upToNextMajorVersion; minimumVersion = 5.0.0; }; };
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A301 /* RevenueCat */ = {isa = XCSwiftPackageProductDependency; package = A300 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */; productName = RevenueCat; };
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = A800 /* Project object */;
+}

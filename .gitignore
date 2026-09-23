@@ -1,0 +1,27 @@
+# macOS and Xcode
+.DS_Store
+DerivedData/
+build/
+*.xcuserstate
+xcuserdata/
+*.xcarchive
+*.ipa
+*.dSYM/
+
+# Local service configuration and secrets
+Secrets.xcconfig
+password-reset-web/config.js
+.env
+.env.*
+!.env.example
+supabase/.temp/
+supabase/.branches/
+supabase/.env
+*.p8
+*.p12
+*.mobileprovision
+
+# Editor and tool state
+.vscode/
+.idea/
+.swiftpm/xcode/package.xcworkspace/xcuserdata/

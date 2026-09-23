@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>Set your Weywell password</title>
+  <style>
+    :root { color-scheme: light; font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #12304a; background: #e7f5fc; }
+    * { box-sizing: border-box; }
+    body { min-height: 100vh; margin: 0; display: grid; place-items: center; padding: 24px; }
+    main { width: min(100%, 440px); padding: 32px; border-radius: 24px; background: white; box-shadow: 0 16px 50px #12304a18; }
+    .brand { font-weight: 850; letter-spacing: .1em; color: #1877bd; font-size: .82rem; }
+    h1 { margin: 14px 0 8px; line-height: 1.15; font-size: 2rem; letter-spacing: -.04em; }
+    p { color: #62778a; }
+    label { display: block; margin: 18px 0 6px; font-weight: 650; font-size: .9rem; }
+    input { width: 100%; padding: 13px 14px; border: 1px solid #c9d9e5; border-radius: 12px; font: inherit; outline: none; }
+    input:focus { border-color: #1877bd; box-shadow: 0 0 0 3px #1877bd20; }
+    button { width: 100%; margin-top: 20px; border: 0; border-radius: 13px; padding: 14px; background: #1877bd; color: white; font: inherit; font-weight: 750; cursor: pointer; }
+    button:disabled { opacity: .55; cursor: wait; }
+    #message { min-height: 24px; margin-top: 14px; font-size: .92rem; }
+    #message.error { color: #bd3636; }
+    #message.success { color: #16806f; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="brand">WEYWELL · ACCOUNT SECURITY</div>
+    <h1>Set a new password</h1>
+    <p>Choose a password for signing in to Weywell’s moderator tools. This page sends it securely to Weywell’s Supabase Auth service and does not store it.</p>
+    <form id="reset-form" hidden>
+      <label for="password">New password</label>
+      <input id="password" type="password" autocomplete="new-password" minlength="8" required>
+      <label for="confirm">Confirm new password</label>
+      <input id="confirm" type="password" autocomplete="new-password" minlength="8" required>
+      <button id="submit" type="submit">Save password</button>
+    </form>
+    <p id="message" role="status" aria-live="polite">Checking your secure reset link…</p>
+  </main>
+  <script src="config.js"></script>
+  <script>
+    (() => {
+      const config = window.WeywellConfig || {};
+      const supabaseURL = config.supabaseURL || "";
+      const publishableKey = config.supabasePublishableKey || "";
+      const message = document.querySelector("#message");
+      const form = document.querySelector("#reset-form");
+      const button = document.querySelector("#submit");
+      const fragment = new URLSearchParams(location.hash.slice(1));
+      const accessToken = fragment.get("access_token");
+      const isRecovery = fragment.get("type") === "recovery";
+
+      // Keep the one-time bearer token out of the visible URL and browser history.
+      if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+
+      if (!supabaseURL || !publishableKey) {
+        message.className = "error";
+        message.textContent = "Password reset is not configured. Contact Weywell support.";
+      } else if (accessToken && isRecovery) {
+        form.hidden = false;
+        message.textContent = "Your reset link is ready. Choose a new password.";
+      } else {
+        message.className = "error";
+        message.textContent = "This reset link is missing, expired or already used. Request a fresh link from Weywell and open it on this computer.";
+      }
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const password = document.querySelector("#password").value;
+        const confirmation = document.querySelector("#confirm").value;
+        if (password.length < 8) {
+          message.className = "error";
+          message.textContent = "Use at least 8 characters.";
+          return;
+        }
+        if (password !== confirmation) {
+          message.className = "error";
+          message.textContent = "Those passwords do not match.";
+          return;
+        }
+
+        button.disabled = true;
+        message.className = "";
+        message.textContent = "Saving your new password…";
+        try {
+          const response = await fetch(`${supabaseURL}/auth/v1/user`, {
+            method: "PUT",
+            headers: {
+              apikey: publishableKey,
+              Authorization: `Bearer ${accessToken}`,
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ password })
+          });
+          if (!response.ok) throw new Error("The secure link may have expired or been used.");
+          message.className = "success";
+          message.textContent = "Password updated. You can now sign in to Weywell’s moderator tools.";
+          form.reset();
+          form.hidden = true;
+        } catch {
+          message.className = "error";
+          message.textContent = "Could not update the password. Request a fresh link and try again.";
+          button.disabled = false;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
