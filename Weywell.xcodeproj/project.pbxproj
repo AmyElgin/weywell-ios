@@ -16,6 +16,10 @@
 		A009 /* ProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A109 /* ProfileStore.swift */; };
 		A010 /* PushSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = A110 /* PushSync.swift */; };
 		A011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A111 /* Assets.xcassets */; };
+		A012 /* ReportViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A113 /* ReportViews.swift */; };
+		A013 /* CommunityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A114 /* CommunityViews.swift */; };
+		A014 /* ModerationViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A115 /* ModerationViews.swift */; };
+		A015 /* PlusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A116 /* PlusView.swift */; };
 		A006 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = A301 /* RevenueCat */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +37,10 @@
 		A110 /* PushSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushSync.swift; sourceTree = "<group>"; };
 		A111 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A112 /* Weywell.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Weywell.xcconfig; sourceTree = "<group>"; };
+		A113 /* ReportViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViews.swift; sourceTree = "<group>"; };
+		A114 /* CommunityViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViews.swift; sourceTree = "<group>"; };
+		A115 /* ModerationViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModerationViews.swift; sourceTree = "<group>"; };
+		A116 /* PlusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,7 +49,7 @@
 
 /* Begin PBXGroup section */
 		A400 = {isa = PBXGroup; children = ( A401 /* Weywell */, A402 /* Products */, A112 /* Weywell.xcconfig */, ); sourceTree = "<group>"; };
-		A401 /* Weywell */ = {isa = PBXGroup; children = ( A101 /* WeywellApp.swift */, A102 /* ContentView.swift */, A103 /* SafetyUpdate.swift */, A104 /* LocationManager.swift */, A105 /* PurchaseManager.swift */, A107 /* MonitorManager.swift */, A108 /* BackendService.swift */, A109 /* ProfileStore.swift */, A110 /* PushSync.swift */, A111 /* Assets.xcassets */, A106 /* Info.plist */, ); path = Weywell; sourceTree = "<group>"; };
+		A401 /* Weywell */ = {isa = PBXGroup; children = ( A101 /* WeywellApp.swift */, A102 /* ContentView.swift */, A113 /* ReportViews.swift */, A114 /* CommunityViews.swift */, A115 /* ModerationViews.swift */, A116 /* PlusView.swift */, A103 /* SafetyUpdate.swift */, A104 /* LocationManager.swift */, A105 /* PurchaseManager.swift */, A107 /* MonitorManager.swift */, A108 /* BackendService.swift */, A109 /* ProfileStore.swift */, A110 /* PushSync.swift */, A111 /* Assets.xcassets */, A106 /* Info.plist */, ); path = Weywell; sourceTree = "<group>"; };
 		A402 /* Products */ = {isa = PBXGroup; children = ( A100 /* Weywell.app */, ); name = Products; sourceTree = "<group>"; };
 /* End PBXGroup section */
 
@@ -58,7 +66,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A700 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = ( A001 /* WeywellApp.swift in Sources */, A002 /* ContentView.swift in Sources */, A003 /* SafetyUpdate.swift in Sources */, A004 /* LocationManager.swift in Sources */, A005 /* PurchaseManager.swift in Sources */, A007 /* MonitorManager.swift in Sources */, A008 /* BackendService.swift in Sources */, A009 /* ProfileStore.swift in Sources */, A010 /* PushSync.swift in Sources */, ); runOnlyForDeploymentPostprocessing = 0; };
+		A700 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = ( A001 /* WeywellApp.swift in Sources */, A002 /* ContentView.swift in Sources */, A012 /* ReportViews.swift in Sources */, A013 /* CommunityViews.swift in Sources */, A014 /* ModerationViews.swift in Sources */, A015 /* PlusView.swift in Sources */, A003 /* SafetyUpdate.swift in Sources */, A004 /* LocationManager.swift in Sources */, A005 /* PurchaseManager.swift in Sources */, A007 /* MonitorManager.swift in Sources */, A008 /* BackendService.swift in Sources */, A009 /* ProfileStore.swift in Sources */, A010 /* PushSync.swift in Sources */, ); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
