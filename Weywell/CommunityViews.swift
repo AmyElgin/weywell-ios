@@ -280,7 +280,7 @@ struct ProfileView: View {
               Text("PROFILE & PRIVACY").font(.caption.bold()).tracking(1).foregroundStyle(
                 .secondary)
               Text(
-                "Your saved address stays on this device. Reports are never tied to this profile."
+                "Your address label stays on this device. If you follow an area with Plus, its map coordinates sync for alerts. Reports are never tied to this profile."
               ).font(.footnote).foregroundStyle(.secondary)
               Button("Delete profile from this device", role: .destructive) { remove = true }.font(
                 .subheadline.bold())

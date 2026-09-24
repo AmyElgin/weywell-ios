@@ -527,9 +527,9 @@ private struct RouteChecker: View {
     savedRoute = false
     defer { searching = false }
     do {
-      matches = try await profile.lookupAddress(destination)
+      matches = try await profile.lookupDestination(destination)
       if matches.isEmpty {
-        routeError = "No destination found. Add a street, suburb or city and try again."
+        routeError = "No precise match found. Try a street address, landmark or suburb."
       }
     } catch {
       matches = []

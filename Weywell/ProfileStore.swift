@@ -89,6 +89,53 @@ final class ProfileStore: ObservableObject {
   }
 
   func lookupAddress(_ address: String) async throws -> [AddressCandidate] {
+    try await lookup(address, resultTypes: .address)
+  }
+
+  func lookupDestination(_ destination: String) async throws -> [AddressCandidate] {
+    // A broad geocoder result (e.g. just "Durban" for "Durban City Hall")
+    // must not silently become the user's chosen destination.
+    let addresses = (try? await lookup(destination, resultTypes: .address)) ?? []
+    let preciseAddresses = addresses.filter { Self.matchesDestination($0, query: destination) }
+    if !preciseAddresses.isEmpty { return preciseAddresses }
+
+    // Journeys may end at a landmark or public venue, not only a street address.
+    let request = MKLocalSearch.Request()
+    request.naturalLanguageQuery = destination
+    request.resultTypes = .pointOfInterest
+    request.region = .init(
+      center: .init(latitude: -29.8587, longitude: 31.0218), latitudinalMeters: 3_000_000,
+      longitudinalMeters: 3_000_000)
+    let response = try await MKLocalSearch(request: request).start()
+    return Array(
+      response.mapItems.compactMap { item -> AddressCandidate? in
+        let place = item.placemark
+        guard isSouthAfrican(place.coordinate), place.countryCode == "ZA" else { return nil }
+        let candidate = AddressCandidate(
+          title: item.name ?? place.name ?? destination,
+          subtitle: [place.locality, place.administrativeArea, place.country]
+            .compactMap { $0 }.joined(separator: ", "), coordinate: place.coordinate)
+        return Self.matchesDestination(candidate, query: destination) ? candidate : nil
+      }.prefix(6))
+  }
+
+  private static func matchesDestination(_ candidate: AddressCandidate, query: String) -> Bool {
+    let ignored: Set<String> = ["the", "of", "and", "south", "africa"]
+    func words(_ text: String) -> Set<String> {
+      Set(
+        text.lowercased().split(whereSeparator: { !$0.isLetter && !$0.isNumber })
+          .map(String.init).filter { !ignored.contains($0) })
+    }
+    let searched = words(query)
+    guard !searched.isEmpty else { return false }
+    let found = words(candidate.title + " " + candidate.subtitle)
+    let minimumMatches = searched.count <= 2 ? searched.count : searched.count - 1
+    return searched.intersection(found).count >= minimumMatches
+  }
+
+  private func lookup(
+    _ address: String, resultTypes: MKLocalSearch.Request.ResultType
+  ) async throws -> [AddressCandidate] {
     let request = MKLocalSearch.Request()
     request.naturalLanguageQuery =
       address.localizedCaseInsensitiveContains("south africa")
@@ -96,7 +143,7 @@ final class ProfileStore: ObservableObject {
     request.region = .init(
       center: .init(latitude: -29.8587, longitude: 31.0218), latitudinalMeters: 3_000_000,
       longitudinalMeters: 3_000_000)
-    request.resultTypes = .address
+    request.resultTypes = resultTypes
     if let response = try? await MKLocalSearch(request: request).start() {
       let matches = response.mapItems.compactMap { item -> AddressCandidate? in
         let place = item.placemark
