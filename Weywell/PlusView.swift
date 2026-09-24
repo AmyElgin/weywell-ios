@@ -61,7 +61,8 @@ struct PlusView: View {
               tint: .coral)
             feature(
               "mappin.and.ellipse", "Follow your area",
-              "Save an area and choose the distance you want to keep an eye on.", tint: .blue)
+              "Save an area and choose the distance you want to keep an eye on.",
+              tint: .weywellAccent)
             feature(
               "point.topleft.down.curvedto.point.bottomright.up", "Follow a regular route",
               "Keep a route in your saved watches and see notices near its roads.", tint: .purple)
@@ -69,7 +70,8 @@ struct PlusView: View {
 
           if purchases.isPro {
             Label("Weywell Plus is active", systemImage: "checkmark.seal.fill").font(.headline)
-              .foregroundStyle(.blue).padding(18).frame(maxWidth: .infinity).background(
+              .foregroundStyle(Color.weywellAccent).padding(18).frame(maxWidth: .infinity)
+              .background(
                 .white, in: RoundedRectangle(cornerRadius: 18))
           } else {
             VStack(alignment: .leading, spacing: 10) {
@@ -84,7 +86,7 @@ struct PlusView: View {
               } label: {
                 Text("Continue with Plus").font(.headline).frame(maxWidth: .infinity).padding(
                   .vertical, 16
-                ).background(Color.blue, in: RoundedRectangle(cornerRadius: 15))
+                ).background(Color.weywellAccent, in: RoundedRectangle(cornerRadius: 15))
               }.foregroundStyle(.white).disabled(
                 purchases.offering?.availablePackages.isEmpty != false)
               Button("Restore purchases") { purchases.restore() }.font(.subheadline.bold()).frame(
@@ -132,9 +134,10 @@ extension SafetyCategory {
   }
 }
 extension Color {
-  static let weywellSky = Color(red: 0.75, green: 0.90, blue: 0.98)
-  static let weywellMist = Color(red: 0.94, green: 0.98, blue: 1)
-  static let weywellInk = Color(red: 0.08, green: 0.22, blue: 0.36)
+  static let weywellSky = Color(red: 0.90, green: 0.85, blue: 0.97)
+  static let weywellMist = Color(red: 0.97, green: 0.94, blue: 0.99)
+  static let weywellInk = Color(red: 0.20, green: 0.14, blue: 0.29)
+  static let weywellAccent = Color(red: 0.40, green: 0.28, blue: 0.72)
   static let coral = Color(red: 0.94, green: 0.36, blue: 0.33)
   static let amber = Color(red: 0.95, green: 0.65, blue: 0.18)
   static let purple = Color(red: 0.53, green: 0.34, blue: 0.91)

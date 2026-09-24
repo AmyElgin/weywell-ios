@@ -57,7 +57,7 @@ struct AlertCentre: View {
               Spacer()
               Text("\(nearby.count) current").font(.caption.bold()).foregroundStyle(.secondary)
             }
-            Slider(value: $radius, in: 5...60, step: 5)
+            Slider(value: $radius, in: 5...60, step: 5).tint(Color.weywellAccent)
             if nearby.isEmpty {
               Label(
                 profile.profile == nil
@@ -80,7 +80,7 @@ struct AlertCentre: View {
                       purchases.isPro ? monitoring.matchingMonitorNames(for: update) : []
                     if !matches.isEmpty {
                       Text("Matches \(matches.joined(separator: ", "))").font(.caption2.bold())
-                        .foregroundStyle(.blue)
+                        .foregroundStyle(Color.weywellAccent)
                     }
                   }
                 }.padding(.vertical, 5)
@@ -143,7 +143,7 @@ struct AlertCentre: View {
             ForEach(purchases.isPro ? monitoring.monitors : []) { item in
               HStack(spacing: 8) {
                 Image(systemName: item.kind == .route ? "car.fill" : "mappin.circle.fill")
-                  .foregroundStyle(item.kind == .route ? Color.purple : Color.blue)
+                  .foregroundStyle(item.kind == .route ? Color.purple : Color.weywellAccent)
                 VStack(alignment: .leading, spacing: 2) {
                   Text(item.name).font(.subheadline.bold())
                   Text(item.kind == .route ? "Route watch" : "Area · \(item.radiusKilometres) km")
@@ -220,7 +220,8 @@ struct ProfileView: View {
                 }
                 Spacer()
               }
-              .padding(.vertical, 15).background(Color.blue, in: RoundedRectangle(cornerRadius: 15))
+              .padding(.vertical, 15).background(
+                Color.weywellAccent, in: RoundedRectangle(cornerRadius: 15))
             }.foregroundStyle(.white).disabled(
               address.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || profile.isResolving
             )
@@ -234,7 +235,8 @@ struct ProfileView: View {
                     profile.save(name: name, candidate: candidate)
                   } label: {
                     HStack(spacing: 10) {
-                      Image(systemName: "mappin.circle.fill").font(.title3).foregroundStyle(.blue)
+                      Image(systemName: "mappin.circle.fill").font(.title3)
+                        .foregroundStyle(Color.weywellAccent)
                       VStack(alignment: .leading, spacing: 2) {
                         Text(candidate.title).font(.subheadline.bold())
                         Text(candidate.subtitle).font(.caption).foregroundStyle(.secondary)
@@ -300,7 +302,7 @@ struct ProfileView: View {
               Label("Moderator sign-in", systemImage: "checkmark.shield.fill")
                 .font(.subheadline.bold()).frame(maxWidth: .infinity).padding(.vertical, 12)
                 .background(Color.weywellMist, in: RoundedRectangle(cornerRadius: 13))
-            }.foregroundStyle(.blue)
+            }.foregroundStyle(Color.weywellAccent)
           }.padding(18).frame(maxWidth: .infinity, alignment: .leading).background(
             .white, in: RoundedRectangle(cornerRadius: 23))
         }.padding(20).padding(.bottom, 24)

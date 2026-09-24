@@ -127,11 +127,13 @@ struct ContentView: View {
     Map(position: $position) {
       UserAnnotation()
       MapCircle(center: profile.profile?.coordinate ?? center, radius: radius * 1_000)
-        .foregroundStyle(.blue.opacity(0.10)).stroke(.blue.opacity(0.45), lineWidth: 2)
+        .foregroundStyle(Color.weywellAccent.opacity(0.10))
+        .stroke(Color.weywellAccent.opacity(0.45), lineWidth: 2)
       if let home = profile.profile {
         Annotation("Home", coordinate: home.coordinate, anchor: .bottom) {
           Image(systemName: "house.fill").font(.caption.bold()).foregroundStyle(.white).padding(11)
-            .background(Color.blue, in: Circle()).overlay(Circle().stroke(.white, lineWidth: 3))
+            .background(Color.weywellAccent, in: Circle())
+            .overlay(Circle().stroke(.white, lineWidth: 3))
             .shadow(radius: 4)
         }
       }
@@ -186,11 +188,13 @@ struct ContentView: View {
             Text(category?.shortName ?? "All alerts").font(.caption.bold()).foregroundStyle(
               category?.tint ?? .secondary)
           }
-          Slider(value: $radius, in: 5...60, step: 5).tint(.blue)
+          Slider(value: $radius, in: 5...60, step: 5).tint(Color.weywellAccent)
           if purchases.isPro {
             ScrollView(.horizontal, showsIndicators: false) {
               HStack {
-                Filter(title: "All", active: category == nil, tint: .blue) { category = nil }
+                Filter(title: "All", active: category == nil, tint: .weywellAccent) {
+                  category = nil
+                }
                 ForEach(SafetyCategory.allCases) { item in
                   Filter(title: item.shortName, active: category == item, tint: item.tint) {
                     category = item
@@ -206,7 +210,7 @@ struct ContentView: View {
                 .caption.bold()
               ).frame(maxWidth: .infinity).padding(10).background(
                 Color.weywellMist, in: RoundedRectangle(cornerRadius: 12))
-            }.foregroundStyle(.blue)
+            }.foregroundStyle(Color.weywellAccent)
           }
         }.padding(14).background(.white, in: RoundedRectangle(cornerRadius: 19))
       }
@@ -223,7 +227,7 @@ struct ContentView: View {
         } label: {
           Image(systemName: "point.topleft.down.curvedto.point.bottomright.up").font(.headline)
             .frame(width: 56, height: 56).background(.white, in: RoundedRectangle(cornerRadius: 18))
-        }.foregroundStyle(.blue).accessibilityLabel("Plan a journey")
+        }.foregroundStyle(Color.weywellAccent).accessibilityLabel("Plan a journey")
       }.padding(.horizontal, 14).padding(.top, 13).padding(.bottom, 112)
     }
   }
@@ -289,9 +293,10 @@ private struct Nav: View {
       VStack(spacing: 3) {
         Image(systemName: icon)
         Text(text).font(.caption2.bold())
-      }.foregroundStyle(active ? .blue : .secondary).frame(maxWidth: .infinity).padding(
-        .vertical, 7
-      ).background(active ? Color.weywellMist : .clear, in: Capsule())
+      }.foregroundStyle(active ? Color.weywellAccent : .secondary).frame(maxWidth: .infinity)
+        .padding(
+          .vertical, 7
+        ).background(active ? Color.weywellMist : .clear, in: Capsule())
     }
   }
 }
@@ -411,7 +416,8 @@ private struct RouteChecker: View {
                 }
                 Spacer()
               }
-              .padding(.vertical, 14).background(Color.blue, in: RoundedRectangle(cornerRadius: 14))
+              .padding(.vertical, 14).background(
+                Color.weywellAccent, in: RoundedRectangle(cornerRadius: 14))
             }.foregroundStyle(.white).disabled(
               destination.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || searching)
 
@@ -428,7 +434,8 @@ private struct RouteChecker: View {
                   foundRoute = nil
                 } label: {
                   HStack(spacing: 10) {
-                    Image(systemName: "mappin.circle.fill").font(.title3).foregroundStyle(.blue)
+                    Image(systemName: "mappin.circle.fill").font(.title3)
+                      .foregroundStyle(Color.weywellAccent)
                     VStack(alignment: .leading, spacing: 2) {
                       Text(candidate.title).font(.subheadline.bold())
                       Text(candidate.subtitle).font(.caption).foregroundStyle(.secondary)
@@ -454,7 +461,7 @@ private struct RouteChecker: View {
                   Spacer()
                 }
                 .padding(.vertical, 15).background(
-                  Color.blue, in: RoundedRectangle(cornerRadius: 14))
+                  Color.weywellAccent, in: RoundedRectangle(cornerRadius: 14))
               }.foregroundStyle(.white).disabled(checking)
             }
             if let routeError {
@@ -468,8 +475,8 @@ private struct RouteChecker: View {
               Text("YOUR DRIVING ROUTE").font(.caption.bold()).tracking(1).foregroundStyle(
                 .secondary)
               Map(position: $routePosition) {
-                MapPolyline(route.polyline).stroke(.blue, lineWidth: 6)
-                Marker("Start", coordinate: origin).tint(.blue)
+                MapPolyline(route.polyline).stroke(Color.weywellAccent, lineWidth: 6)
+                Marker("Start", coordinate: origin).tint(Color.weywellAccent)
                 Marker("Destination", coordinate: selectedDestination.coordinate).tint(.green)
                 ForEach(warnings) { update in
                   Marker(update.title, coordinate: update.coordinates).tint(.orange)

@@ -66,7 +66,7 @@ struct ModerationView: View {
   private var signInContent: some View {
     VStack(alignment: .leading, spacing: 14) {
       Label("Private moderator access", systemImage: "lock.shield.fill").font(.headline)
-        .foregroundStyle(.blue)
+        .foregroundStyle(Color.weywellAccent)
       Text(
         "Only accounts explicitly added to Weywell’s moderator list can view or action reports. If you’re the project owner, finish the one-time setup in MODERATION_SETUP.md first."
       )
@@ -90,7 +90,8 @@ struct ModerationView: View {
           }
           Spacer()
         }
-        .padding(.vertical, 15).background(Color.blue, in: RoundedRectangle(cornerRadius: 14))
+        .padding(.vertical, 15).background(
+          Color.weywellAccent, in: RoundedRectangle(cornerRadius: 14))
       }.foregroundStyle(.white).disabled(loading || email.isEmpty || password.isEmpty)
       Button {
         Task {
@@ -110,7 +111,7 @@ struct ModerationView: View {
           Text("Forgot password?").font(.subheadline.weight(.semibold))
         }.frame(maxWidth: .infinity).padding(.vertical, 7)
       }
-      .foregroundStyle(.blue).disabled(
+      .foregroundStyle(Color.weywellAccent).disabled(
         sendingRecovery || email.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
       if let recoveryMessage { Text(recoveryMessage).font(.footnote).foregroundStyle(.secondary) }
       if let message = backend.moderatorError ?? error {
@@ -211,7 +212,7 @@ struct PasswordResetView: View {
         Color.weywellSky.ignoresSafeArea()
         VStack(alignment: .leading, spacing: 16) {
           Label("SECURE YOUR ACCOUNT", systemImage: "lock.shield.fill")
-            .font(.caption.bold()).tracking(1.2).foregroundStyle(.blue)
+            .font(.caption.bold()).tracking(1.2).foregroundStyle(Color.weywellAccent)
           Text("Set a new password")
             .font(.system(size: 31, weight: .black, design: .rounded))
           Text("Choose a password you’ll use to sign in to Weywell’s moderator tools.")
@@ -235,7 +236,8 @@ struct PasswordResetView: View {
               }
               Spacer()
             }
-            .padding(.vertical, 15).background(Color.blue, in: RoundedRectangle(cornerRadius: 14))
+            .padding(.vertical, 15).background(
+              Color.weywellAccent, in: RoundedRectangle(cornerRadius: 14))
           }
           .foregroundStyle(.white)
           .disabled(saving || password.count < 8 || !passwordsMatch)

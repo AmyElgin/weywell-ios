@@ -45,6 +45,7 @@ struct WeywellApp: App {
       .environmentObject(notices)
       .environmentObject(monitoring)
       .environmentObject(profile)
+      .tint(Color.weywellAccent)
       .task {
         monitoring.refreshPermission()
         await PushSync.shared.sync()
@@ -92,7 +93,7 @@ private struct OnboardingView: View {
       "Report road disruptions, unsafe behaviour, crime or neighbourhood context. New reports are reviewed and short lived; avoid names and private details."
     ),
   ]
-  private let accents: [Color] = [.blue, .coral, .purple]
+  private let accents: [Color] = [.weywellAccent, .coral, .purple]
 
   var body: some View {
     ZStack {
